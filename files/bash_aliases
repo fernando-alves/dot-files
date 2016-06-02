@@ -1,0 +1,13 @@
+alias be='bundle exec'
+alias brake='bundle exec rake'
+alias bi='bundle install --path=vendor/bundle'
+
+alias preparedb='bundle exec rake db:migrate db:test:prepare'
+alias prepare_all='RAILS_ENV=test bundle exec rake db:migrate db:test:prepare parallel:migrate parallel:prepare'
+
+alias vg='vagrant'
+
+alias pgrep='ps aux | grep $1'
+alias jsonpp='python -mjson.tool'
+
+alias gpall='for i in $(ls); (cd $i && [[ -d .git ]] && echo "Pulling changes for $i branch: $(git rev-parse --abbrev-ref HEAD)" && git pull -r);'
