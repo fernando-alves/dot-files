@@ -2,8 +2,7 @@ alias be='bundle exec'
 alias brake='bundle exec rake'
 alias bi='bundle install'
 
-alias preparedb='bundle exec rake db:migrate db:test:prepare'
-alias prepare_all='RAILS_ENV=test bundle exec rake db:migrate db:test:prepare parallel:migrate parallel:prepare'
+alias fserver="ruby -rwebrick -e'WEBrick::HTTPServer.new(:Port => 8000, :DocumentRoot => Dir.pwd).start'"
 
 alias vg='vagrant'
 
