@@ -7,7 +7,7 @@ alias fserver="ruby -rwebrick -e'WEBrick::HTTPServer.new(:Port => 8000, :Documen
 alias vg='vagrant'
 alias d='docker'
 alias dsall="docker ps | awk '{ print $1 }' | tail -n +2 | xargs docker stop"
-alias diclean="docker images | grep '<none>' | awk '{ print $3 }' | xargs docker rmi -f"
+alias diclean="docker images -f "dangling=true" | tail -n +2 | awk '{print $3 }' | xargs docker rmi -f"
 alias compose='docker-compose'
 alias k='kubectl'
 alias pd='pdata'
