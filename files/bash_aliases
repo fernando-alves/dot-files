@@ -8,7 +8,7 @@ alias vg='vagrant'
 alias d='docker'
 alias dsall="docker ps | awk '{ print $1 }' | tail -n +2 | xargs docker stop"
 alias diclean="docker images -f "dangling=true" | tail -n +2 | awk '{print $3 }' | xargs docker rmi -f"
-alias compose='docker-compose'
+alias c='docker-compose'
 alias k='kubectl'
 alias ki='kubectl --namespace=td-integration'
 alias pd='pdata'
