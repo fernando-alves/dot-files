@@ -10,8 +10,10 @@ alias dsall="docker ps | awk '{ print $1 }' | tail -n +2 | xargs docker stop"
 alias diclean="docker images -f "dangling=true" | tail -n +2 | awk '{print $3 }' | xargs docker rmi -f"
 alias c='docker-compose'
 alias k='kubectl'
-alias ki='kubectl --namespace=td-integration'
+alias kt='kubectl --namespace=thoughtdata'
 alias pd='pdata'
+alias pdi='KUBECTL_NAMESPACE=thoughtdata pdata'
+
 
 alias pgrep='ps aux | grep $1'
 alias jsonpp='python -mjson.tool'
