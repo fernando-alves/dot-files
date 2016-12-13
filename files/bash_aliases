@@ -12,7 +12,7 @@ alias c='docker-compose'
 alias k='kubectl'
 alias kt='kubectl --namespace=thoughtdata'
 alias pd='pdata'
-alias pdi='KUBECTL_NAMESPACE=thoughtdata pdata'
+alias pdt='KUBECTL_NAMESPACE=thoughtdata pdata'
 
 
 alias pgrep='ps aux | grep $1'
