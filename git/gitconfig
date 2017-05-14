@@ -8,9 +8,9 @@
 	co = checkout
 	ci = commit
 	br = branch
-        dc = diff --cached
-        df = diff -b
-        amend = commit --amend --no-edit
+  dc = diff --cached
+  df = diff -b
+  amend = commit --amend --no-edit
 	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
 	brdiff = log --left-right --graph --cherry-pick --oneline
 [color]

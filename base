@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+set -e
+
+BASE_DIR=$(dirname "$0")
+
+export PATH="$BASE_DIR/bin:$PATH"
+
+for file in $(find "$BASE_DIR/source" -type f); do
+  . $file
+done

@@ -1,0 +1,1 @@
+alias gpall='for i in $(ls); do (cd $i && [[ -d .git ]] && echo "Pulling changes for $i branch: $(git rev-parse --abbrev-ref HEAD)" && git pull -r); done'

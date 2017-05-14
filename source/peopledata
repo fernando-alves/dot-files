@@ -1,0 +1,3 @@
+alias pd='pdata'
+alias pdt='KUBECTL_NAMESPACE=thoughtdata pdata'
+alias kt='kubectl --namespace=thoughtdata'
