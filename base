@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 set -e
 
-BASE_DIR=$(dirname "$0")
+BASE_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 export PATH="$BASE_DIR/bin:$PATH"
 
 for file in $(find "$BASE_DIR/source" -type f); do
-  . $file
+  source $file
 done
