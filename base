@@ -10,3 +10,5 @@ ln -sf $BASE_DIR/git/gitconfig $HOME/.gitconfig
 for file in $(find "$BASE_DIR/source" -type f); do
   source $file
 done
+
+set +e
