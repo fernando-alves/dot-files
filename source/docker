@@ -2,11 +2,11 @@ alias d='docker'
 alias c='docker-compose'
 
 function dsall {
-  docker ps | awk '{ print $1 }' | tail -n +2 | xargs docker stop
+  docker ps | awk '{ print $1 }' | tail -n +2 | xargs docker container stop
 }
 
 function dclean {
-  docker images -f "dangling=true" | tail -n +2 | awk '{ print $3 }' | xargs docker rmi -f
+  docker images -f "dangling=true" | tail -n +2 | awk '{ print $3 }' | xargs docker image rm -f
 }
 
 export -f dsall
