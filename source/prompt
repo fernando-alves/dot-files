@@ -1,0 +1,11 @@
+function git_branch {
+  if [ -d .git ]; then
+    echo "[`git branch | grep -i "*" | sed -e "s/*\ //g"`]"
+  fi
+}
+
+function prompt_command {
+  PS1="\u:\W`git_branch`$ "
+}
+
+export PROMPT_COMMAND=prompt_command
