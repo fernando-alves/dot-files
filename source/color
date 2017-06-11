@@ -43,3 +43,4 @@ export -f in_grey
 export -f in_red
 export -f in_purple
 export -f in_yellow
+export -f bold
