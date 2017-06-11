@@ -1,42 +1,25 @@
-# As seen on http://misc.flogisoft.com/_media/bash/colors_format/256_colors_fg.png
-RED="\e[38;5;9m"
-YELLOW="\e[38;5;221m"
-GREEN="\e[38;5;85m"
-PURPLE="\e[38;5;176m"
-GREY="\e[38;5;252m"
-BLUE="\e[38;5;24m"
-
-RESET=$(tput sgr0)
-BOLD=$(tput bold)
-
-function in_color {
-  echo "\[${1}\]${2}\[${RESET}\]"
-}
-
 function git_branch {
   if [ -d .git ]; then
     CURRENT_BRANCH="`git branch | grep -i "*" | sed -e "s/*\ //g"`"
     CLEAN=`git status | grep -i 'nothing to commit'`
-    STATUS_COLOR=`[[ -n ${CLEAN} ]] && echo ${GREEN} || echo ${YELLOW}`
-    LEFT_BRACKET=`in_color ${GREY} '['`
-    RIGHT_BRACKET=`in_color ${GREY} ']'`
-    BRANCH_INFO=`in_color $STATUS_COLOR $CURRENT_BRANCH`
+    BRANCH_INFO=`[[ -n ${CLEAN} ]] && echo $(in_green $CURRENT_BRANCH) || echo $(in_yellow $CURRENT_BRANCH)`
+    LEFT_BRACKET=`in_grey '['`
+    RIGHT_BRACKET=`in_grey ']'`
     echo "${LEFT_BRACKET}${BRANCH_INFO}${RIGHT_BRACKET}"
   fi
 }
 
 function last_command_status {
-  STATUS_COLOR=`[[ "$1" == 0 ]] && echo ${GREEN} || echo ${RED}`
-  echo `in_color ${STATUS_COLOR} '➜'`
+  echo `[[ "$1" == 0 ]] && echo $(in_green '➜') || echo $(in_red '➜')`
 }
 
 function prompt_command {
   LAST_COMMAND_STATUS=`last_command_status "$?"`
-  USER=`in_color ${GREY} '\u'`
-  CURRENT_DIR=`in_color ${PURPLE} '\W'`
+  USER=`in_grey '\u'`
+  CURRENT_DIR=`in_purple '\W'`
   BRANCH=`git_branch`
-  SEPARATOR=`in_color ${BLUE} ':'`
-  END=`in_color ${GREY} '$'`
+  SEPARATOR=`in_blue ':'`
+  END=`in_grey '$'`
 
   PS1="${LAST_COMMAND_STATUS} ${USER}${SEPARATOR}${CURRENT_DIR}${BRANCH}${END} "
 }

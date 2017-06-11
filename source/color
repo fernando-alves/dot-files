@@ -1,0 +1,45 @@
+# As seen on http://misc.flogisoft.com/_media/bash/colors_format/256_colors_fg.png
+BLUE="\e[38;5;24m"
+GREEN="\e[38;5;85m"
+GREY="\e[38;5;252m"
+RED="\e[38;5;9m"
+PURPLE="\e[38;5;176m"
+YELLOW="\e[38;5;221m"
+
+RESET=$(tput sgr0)
+BOLD=$(tput bold)
+
+function in_color {
+  echo "\[${1}\]${2}\[${RESET}\]"
+}
+
+function in_blue {
+  in_color ${BLUE} $1
+}
+
+function in_green {
+  in_color ${GREEN} $1
+}
+
+function in_grey {
+  in_color ${GREY} $1
+}
+
+function in_red {
+  in_color ${RED} $1
+}
+
+function in_purple {
+  in_color ${PURPLE} $1
+}
+
+function in_yellow {
+  in_color ${YELLOW} $1
+}
+
+export -f in_blue
+export -f in_green
+export -f in_grey
+export -f in_red
+export -f in_purple
+export -f in_yellow
