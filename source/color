@@ -37,6 +37,10 @@ function in_yellow {
   in_color ${YELLOW} $1
 }
 
+function bold {
+  echo "\[${BOLD}\]${1}\[${RESET}\]"
+}
+
 export -f in_blue
 export -f in_green
 export -f in_grey
