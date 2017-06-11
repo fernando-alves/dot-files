@@ -1,11 +1,44 @@
+# As seen on http://misc.flogisoft.com/_media/bash/colors_format/256_colors_fg.png
+RED="\e[38;5;9m"
+YELLOW="\e[38;5;221m"
+GREEN="\e[38;5;85m"
+PURPLE="\e[38;5;176m"
+GREY="\e[38;5;252m"
+BLUE="\e[38;5;24m"
+
+RESET=$(tput sgr0)
+BOLD=$(tput bold)
+
+function in_color {
+  echo "\[${1}\]${2}\[${RESET}\]"
+}
+
 function git_branch {
   if [ -d .git ]; then
-    echo "[`git branch | grep -i "*" | sed -e "s/*\ //g"`]"
+    CURRENT_BRANCH="`git branch | grep -i "*" | sed -e "s/*\ //g"`"
+    CLEAN=`git status | grep -i 'nothing to commit'`
+    STATUS_COLOR=`[[ -n ${CLEAN} ]] && echo ${GREEN} || echo ${YELLOW}`
+    LEFT_BRACKET=`in_color ${GREY} '['`
+    RIGHT_BRACKET=`in_color ${GREY} ']'`
+    BRANCH_INFO=`in_color $STATUS_COLOR $CURRENT_BRANCH`
+    echo "${LEFT_BRACKET}${BRANCH_INFO}${RIGHT_BRACKET}"
   fi
 }
 
+function last_command_status {
+  STATUS_COLOR=`[[ "$1" == 0 ]] && echo ${GREEN} || echo ${RED}`
+  echo `in_color ${STATUS_COLOR} '➜'`
+}
+
 function prompt_command {
-  PS1="\u:\W`git_branch`$ "
+  LAST_COMMAND_STATUS=`last_command_status "$?"`
+  USER=`in_color ${GREY} '\u'`
+  CURRENT_DIR=`in_color ${PURPLE} '\W'`
+  BRANCH=`git_branch`
+  SEPARATOR=`in_color ${BLUE} ':'`
+  END=`in_color ${GREY} '$'`
+
+  PS1="${LAST_COMMAND_STATUS} ${USER}${SEPARATOR}${CURRENT_DIR}${BRANCH}${END} "
 }
 
 export PROMPT_COMMAND=prompt_command
