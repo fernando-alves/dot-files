@@ -1,5 +1,0 @@
-alias pd='pdata'
-alias pdt='KUBECTL_NAMESPACE=thoughtdata pdata'
-alias kt='kubectl --namespace=thoughtdata'
-alias kg='kubectl --namespace gocd'
-alias kw='kubectl --namespace workday'
