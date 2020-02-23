@@ -1,5 +1,5 @@
 [user]
-	email = fernandoasfj@gmail.com
+	email = fernandoasfj+github@gmail.com
 	name = Fernando
 [push]
 	default = upstream
@@ -17,3 +17,6 @@
 	ui = true
 [merge]
 	defaultToUpstream = true
+
+[include]
+    path = ./custom/scout
