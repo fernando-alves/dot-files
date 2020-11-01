@@ -3,6 +3,8 @@
 	name = Fernando
 [push]
 	default = upstream
+[pull]
+	rebase = true
 [alias]
 	st = status
 	co = checkout
