@@ -1,0 +1,5 @@
+autoload -U compinit
+compinit
+zstyle ':completion:*' menu select
+
+setopt append_history share_history histignorealldups
