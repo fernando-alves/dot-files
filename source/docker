@@ -1,14 +1,4 @@
 alias d='docker'
 alias c='docker-compose'
-
-function dsall {
-  docker container stop $(docker container ls --format "{{.ID}}" -q)
-}
-
-function dclean {
-  docker image prune -f
-  docker container prune -f
-}
-
-export -f dsall
-export -f dclean
+alias dsall='docker container stop $(docker container ls --format "{{.ID}}" -q)'
+alias dclean='docker image prune -f && docker container prune -f'

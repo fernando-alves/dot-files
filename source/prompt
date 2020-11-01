@@ -1,3 +1,40 @@
+function in_color {
+  local color=$1
+  local text=$2
+  echo "%F{${color}}${text}%f"
+}
+
+function in_grey {
+  in_color 252 $1
+}
+
+function in_purple {
+  in_color 176 $1
+}
+
+function in_blue {
+  in_color 24 $1
+}
+
+function in_green {
+  in_color 85 $1
+}
+
+function in_red {
+  in_color 9 $1
+}
+
+function in_yellow {
+  in_color 221 $1
+}
+
+function last_command_status {
+  local SUCCESS=`in_green '➜'`
+  local FAILURE=`in_red '➜'`
+
+  echo "%(?.${SUCCESS}.${FAILURE})"
+}
+
 function git_branch {
   if [ -d .git ]; then
     CURRENT_BRANCH="`git branch | grep -i "*" | sed -e "s/*\ //g"`"
@@ -9,19 +46,16 @@ function git_branch {
   fi
 }
 
-function last_command_status {
-  echo `[[ "$1" == 0 ]] && echo $(in_green '➜') || echo $(in_red '➜')`
-}
-
-function prompt_command {
-  LAST_COMMAND_STATUS=`last_command_status "$?"`
-  USER=`in_grey '\u'`
-  CURRENT_DIR=`in_purple '\W'`
-  BRANCH=`git_branch`
+function prompt_commando {
+  LAST_COMMAND_STATUS=`last_command_status`
+  GIT=`git_branch`
+  USER=`in_grey '%n'`
+  CURRENT_DIR=`in_purple '%.'`
   SEPARATOR=`in_blue ':'`
   END=`in_grey '$'`
+  BRANCH_FORMAT="[ %s ]"
 
-  PS1="${LAST_COMMAND_STATUS} ${USER}${SEPARATOR}${CURRENT_DIR}${BRANCH}${END} "
+  PS1="${LAST_COMMAND_STATUS} ${USER}${SEPARATOR}${CURRENT_DIR} ${GIT}${END} "
 }
 
-export PROMPT_COMMAND=prompt_command
+precmd() { prompt_commando; }
