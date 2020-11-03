@@ -47,13 +47,13 @@ function git_branch {
 }
 
 function prompt_commando {
-  LAST_COMMAND_STATUS=`last_command_status`
-  GIT=`git_branch`
-  USER=`in_grey '%n'`
-  CURRENT_DIR=`in_purple '%.'`
-  SEPARATOR=`in_blue ':'`
-  END=`in_grey '$'`
-  BRANCH_FORMAT="[ %s ]"
+  local LAST_COMMAND_STATUS=`last_command_status`
+  local GIT=`git_branch`
+  local USER=`in_grey '%n'`
+  local CURRENT_DIR=`in_purple '%.'`
+  local SEPARATOR=`in_blue ':'`
+  local END=`in_grey '$'`
+  local BRANCH_FORMAT="[ %s ]"
 
   PS1="${LAST_COMMAND_STATUS} ${USER}${SEPARATOR}${CURRENT_DIR} ${GIT}${END} "
 }
