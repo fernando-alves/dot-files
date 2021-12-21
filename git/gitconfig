@@ -19,6 +19,5 @@
 	ui = true
 [merge]
 	defaultToUpstream = true
-
-[include]
-    path = ./custom/scout
+[init]
+	defaultBranch = main
