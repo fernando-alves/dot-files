@@ -1,4 +1,6 @@
+alias p='podman'
 alias d='docker'
+alias docker='podman'
 alias c='docker-compose'
 alias dsall='docker container stop $(docker container ls --format "{{.ID}}" -q)'
 alias dclean='docker image prune -f && docker container prune -f'
