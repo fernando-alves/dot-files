@@ -2,3 +2,4 @@ autoload -U compinit
 compinit
 zstyle ':completion:*' menu select
 setopt append_history share_history histignorealldups
+setopt HIST_IGNORE_SPACE
