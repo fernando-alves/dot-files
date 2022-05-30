@@ -1,0 +1,4 @@
+if command -v colima 1>/dev/null 2>&1; then
+  export DOCKER_HOST=unix:///Users/${USERNAME}/.colima/docker.sock
+  export TESTCONTAINERS_DOCKER_SOCKET_OVERRIDE=/var/run/docker.sock
+fi
