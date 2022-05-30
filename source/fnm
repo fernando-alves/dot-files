@@ -1,1 +1,3 @@
-eval "$(fnm env --use-on-cd)"
+if command -v fnm 1>/dev/null 2>&1; then
+  eval "$(fnm env --use-on-cd)"
+fi
