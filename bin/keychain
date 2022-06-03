@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env zsh
 # Thank you, Valtas
 # https://github.com/mavcunha/bash/blob/master/bin/keychain
 # retrieves keys from keychains on OSX
