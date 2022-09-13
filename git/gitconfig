@@ -2,7 +2,7 @@
 	email = fernandoasfj+github@gmail.com
 	name = Fernando Junior
 [push]
-	default = upstream
+	default = current
 [pull]
 	rebase = true
 [alias]
