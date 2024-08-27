@@ -38,7 +38,7 @@ function last_command_status {
 function git_branch {
   if [ -d .git ]; then
     CURRENT_BRANCH="`git branch | grep -i "*" | sed -e "s/*\ //g"`"
-    CLEAN=`git status | grep -i 'nothing to commit'`
+    CLEAN=`git status | grep -iE 'nothing to commit|nada para hacer commit'`
     BRANCH_INFO=`[[ -n ${CLEAN} ]] && echo $(in_green $CURRENT_BRANCH) || echo $(in_yellow $CURRENT_BRANCH)`
     LEFT_BRACKET=`in_grey '['`
     RIGHT_BRACKET=`in_grey ']'`
